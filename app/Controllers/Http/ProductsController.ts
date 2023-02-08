@@ -37,7 +37,7 @@ export default class ProductsController {
     viewData['title'] = 'Products - Online Store';
     viewData['subtitle'] = 'List of products';
     viewData['products'] = ProductsController.products;
-    return ctx.view.render('products.index', { viewData: viewData });
+    return ctx.view.render('products/index', { viewData: viewData });
   }
 
   public async show(ctx: HttpContextContract) {
@@ -46,6 +46,6 @@ export default class ProductsController {
     viewData['title'] = product.name + ' - Online Store';
     viewData['subtitle'] = product.name + ' - Product Information';
     viewData['product'] = product;
-    return ctx.view.render('products.show', { viewData: viewData });
+    return ctx.view.render('products/show', { viewData: viewData });
   }
 }
