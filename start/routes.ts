@@ -22,3 +22,5 @@ import Route from '@ioc:Adonis/Core/Route';
 
 Route.get('/', 'HomeController.index');
 Route.get('/about', 'HomeController.about');
+Route.get('/products', 'ProductsController.index');
+Route.get('/products/:id', 'ProductsController.show');

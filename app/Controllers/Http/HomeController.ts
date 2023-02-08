@@ -1,6 +1,6 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext';
 
-export default class PostsController {
+export default class HomeController {
   public async index(ctx: HttpContextContract) {
     const viewData = [];
     viewData['title'] = 'Home Page - Online Store';
