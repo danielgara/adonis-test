@@ -19,4 +19,27 @@ export default class AuthController {
     newUser.save();
     ctx.response.redirect().toPath('/');
   }
+
+  public async login(ctx: HttpContextContract) {
+    const viewData = [];
+    viewData['title'] = 'User Login - Online Store';
+    viewData['subtitle'] = 'User Login';
+    return ctx.view.render('auth/login', { viewData: viewData });
+  }
+
+  public async connect(ctx: HttpContextContract) {
+    const email = ctx.request.input('email');
+    const password = ctx.request.input('password');
+    try {
+      await ctx.auth.use('web').attempt(email, password);
+      ctx.response.redirect().toPath('/');
+    } catch {
+      ctx.response.redirect().toPath('/auth/login');
+    }
+  }
+
+  public async logout(ctx: HttpContextContract) {
+    await ctx.auth.use('web').logout();
+    ctx.response.redirect().toPath('/');
+  }
 }

@@ -27,3 +27,6 @@ Route.get('/products', 'ProductsController.index');
 Route.get('/products/:id', 'ProductsController.show');
 Route.get('/auth/register', 'AuthController.register');
 Route.post('/auth/store', 'AuthController.store');
+Route.get('/auth/login', 'AuthController.login');
+Route.post('/auth/connect', 'AuthController.connect');
+Route.get('/auth/logout', 'AuthController.logout');
