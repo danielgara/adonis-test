@@ -61,5 +61,5 @@ export default class Product extends BaseModel {
 
   public setPrice(price: number) {
     this.price = price;
-  } 
+  }
 }
