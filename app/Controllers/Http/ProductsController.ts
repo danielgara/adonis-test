@@ -14,10 +14,12 @@ export default class ProductsController {
     const product = await Product.find(ctx.params.id);
     const viewData = [];
     if (product) {
-      viewData['title'] = product.name + ' - Online Store';
-      viewData['subtitle'] = product.name + ' - Product Information';
+      viewData['title'] = product.getName() + ' - Online Store';
+      viewData['subtitle'] = product.getName() + ' - Product Information';
+      viewData['product'] = product;
+      return ctx.view.render('products/show', { viewData: viewData });
+    } else {
+      ctx.response.redirect().toPath('/products')
     }
-    viewData['product'] = product;
-    return ctx.view.render('products/show', { viewData: viewData });
   }
 }

@@ -22,4 +22,44 @@ export default class Product extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime;
+
+  public getId(): number {
+    return this.id;
+  }
+
+  public setId(id: number) {
+    this.id = id;
+  }
+
+  public getName(): string {
+    return this.name;
+  }
+
+  public setName(name: string) {
+    this.name = name;
+  }
+
+  public getDescription(): string {
+    return this.description;
+  }
+
+  public setDescription(description: string) {
+    this.description = description;
+  }
+
+  public getImage(): string {
+    return this.image;
+  }
+
+  public setImage(image: string) {
+    this.image = image;
+  }
+
+  public getPrice(): number {
+    return this.price;
+  }
+
+  public setPrice(price: number) {
+    this.price = price;
+  } 
 }
