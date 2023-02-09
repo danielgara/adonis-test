@@ -25,3 +25,5 @@ Route.get('/', 'HomeController.index');
 Route.get('/about', 'HomeController.about');
 Route.get('/products', 'ProductsController.index');
 Route.get('/products/:id', 'ProductsController.show');
+Route.get('/auth/register', 'AuthController.register');
+Route.post('/auth/store', 'AuthController.store');

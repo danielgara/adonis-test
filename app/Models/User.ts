@@ -7,10 +7,19 @@ export default class User extends BaseModel {
   public id: number;
 
   @column()
+  public name: string;
+
+  @column()
   public email: string;
 
   @column({ serializeAs: null })
   public password: string;
+
+  @column()
+  public role: string;
+
+  @column()
+  public balance: number;
 
   @column()
   public rememberMeToken: string | null;
@@ -24,7 +33,55 @@ export default class User extends BaseModel {
   @beforeSave()
   public static async hashPassword(user: User) {
     if (user.$dirty.password) {
-      user.password = await Hash.make(user.password);
+      user.setPassword(await Hash.make(user.getPassword()));
     }
+  }
+
+  public getId(): number {
+    return this.id;
+  }
+
+  public setId(id: number) {
+    this.id = id;
+  }
+
+  public getName(): string {
+    return this.name;
+  }
+
+  public setName(name: string) {
+    this.name = name;
+  }
+
+  public getEmail(): string {
+    return this.email;
+  }
+
+  public setEmail(email: string) {
+    this.email = email;
+  }
+
+  public getPassword(): string {
+    return this.password;
+  }
+
+  public setPassword(password: string) {
+    this.password = password;
+  }
+
+  public getRole(): string {
+    return this.role;
+  }
+
+  public setRole(role: string) {
+    this.role = role;
+  }
+
+  public getBalance(): number {
+    return this.balance;
+  }
+
+  public setBalance(balance: number) {
+    this.balance = balance;
   }
 }
