@@ -1,5 +1,6 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext';
 import User from 'App/Models/User';
+import CreateUserValidator from 'App/Validators/CreateUserValidator';
 
 export default class AuthController {
   public async register(ctx: HttpContextContract) {
@@ -10,6 +11,7 @@ export default class AuthController {
   }
 
   public async store(ctx: HttpContextContract) {
+    await ctx.request.validate(CreateUserValidator);
     const newUser = new User();
     newUser.setName(ctx.request.input('name'));
     newUser.setPassword(ctx.request.input('password'));
