@@ -27,4 +27,10 @@ export default class AdminProductsController {
     newProduct.save();
     ctx.response.redirect().toPath('/admin/products');
   }
+
+  public async remove(ctx: HttpContextContract) {
+    const product = await Product.findOrFail(ctx.params.id);
+    await product.delete();
+    ctx.response.redirect().toPath('/admin/products');
+  }
 }
