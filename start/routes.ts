@@ -19,6 +19,7 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route';
+import './routes/admin';
 
 Route.get('/', 'HomeController.index');
 Route.get('/about', 'HomeController.about');
