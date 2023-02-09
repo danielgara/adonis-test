@@ -19,7 +19,7 @@ export default class ProductsController {
       viewData['product'] = product;
       return ctx.view.render('products/show', { viewData: viewData });
     } else {
-      ctx.response.redirect().toPath('/products');
+      ctx.response.redirect().toRoute('auth.login');
     }
   }
 }

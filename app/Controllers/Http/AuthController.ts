@@ -19,7 +19,7 @@ export default class AuthController {
     newUser.setRole('client');
     newUser.setBalance(1000);
     newUser.save();
-    ctx.response.redirect().toPath('/');
+    ctx.response.redirect().toRoute('home.index');
   }
 
   public async login(ctx: HttpContextContract) {
@@ -34,14 +34,14 @@ export default class AuthController {
     const password = ctx.request.input('password');
     try {
       await ctx.auth.use('web').attempt(email, password);
-      ctx.response.redirect().toPath('/');
+      ctx.response.redirect().toRoute('home.index');
     } catch {
-      ctx.response.redirect().toPath('/auth/login');
+      ctx.response.redirect().toRoute('auth.login');
     }
   }
 
   public async logout(ctx: HttpContextContract) {
     await ctx.auth.use('web').logout();
-    ctx.response.redirect().toPath('/');
+    ctx.response.redirect().toRoute('home.index');
   }
 }

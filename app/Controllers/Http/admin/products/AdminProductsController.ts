@@ -28,7 +28,7 @@ export default class AdminProductsController {
     newProduct.setPrice(ctx.request.input('price'));
     newProduct.setImage(fileName);
     newProduct.save();
-    ctx.response.redirect().toPath('/admin/products');
+    ctx.response.redirect().toRoute('admin.products.index');
   }
 
   public async edit(ctx: HttpContextContract) {
@@ -54,12 +54,12 @@ export default class AdminProductsController {
     }
 
     product.save();
-    ctx.response.redirect().toPath('/admin/products');
+    ctx.response.redirect().toRoute('admin.products.index');
   }
 
   public async remove(ctx: HttpContextContract) {
     const product = await Product.findOrFail(ctx.params.id);
     await product.delete();
-    ctx.response.redirect().toPath('/admin/products');
+    ctx.response.redirect().toRoute('admin.products.index');
   }
 }
