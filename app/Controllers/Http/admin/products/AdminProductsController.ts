@@ -28,6 +28,31 @@ export default class AdminProductsController {
     ctx.response.redirect().toPath('/admin/products');
   }
 
+  public async edit(ctx: HttpContextContract) {
+    const viewData = [];
+    viewData['title'] = 'Admin Page - Edit Product - Online Store';
+    viewData['product'] = await Product.findOrFail(ctx.params.id);
+    return ctx.view.render('admin/products/edit', { viewData: viewData });
+  }
+
+  public async update(ctx: HttpContextContract) {
+    const product = await Product.findOrFail(ctx.params.id);
+    product.setName(ctx.request.input('name'));
+    product.setDescription(ctx.request.input('description'));
+    product.setPrice(ctx.request.input('price'));
+
+    const productImage = ctx.request.file('image');
+    if (productImage) {
+      await productImage.move(Application.publicPath('uploads'));
+      if (productImage.fileName != undefined) {
+        product.setImage(productImage.fileName);
+      }
+    }
+
+    product.save();
+    ctx.response.redirect().toPath('/admin/products');
+  }
+
   public async remove(ctx: HttpContextContract) {
     const product = await Product.findOrFail(ctx.params.id);
     await product.delete();
