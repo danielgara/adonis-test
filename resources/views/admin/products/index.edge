@@ -6,13 +6,25 @@
     Create Products
   </div>
   <div class="card-body">
+    @if(flashMessages.has('errors.name'))
+      <p class="alert alert-danger">{{ flashMessages.get('errors.name') }}</p>
+    @endif
+    @if(flashMessages.has('errors.description'))
+      <p class="alert alert-danger">{{ flashMessages.get('errors.description') }}</p>
+    @endif
+    @if(flashMessages.has('errors.price'))
+      <p class="alert alert-danger">{{ flashMessages.get('errors.price') }}</p>
+    @endif
+    @if(flashMessages.has('errors.image'))
+      <p class="alert alert-danger">{{ flashMessages.get('errors.image') }}</p>
+    @endif
     <form method="POST" action="/admin/products/store" enctype="multipart/form-data">
       <div class="row">
         <div class="col">
           <div class="mb-3 row">
             <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Name:</label>
             <div class="col-lg-10 col-md-6 col-sm-12">
-              <input name="name" type="text" class="form-control" required>
+              <input name="name" type="text" class="form-control">
             </div>
           </div>
         </div>

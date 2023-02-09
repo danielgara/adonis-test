@@ -17,22 +17,22 @@
   <!-- header -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-4">
     <div class="container">
-      <a class="navbar-brand" href="/">Online Store</a>
+      <a class="navbar-brand" href="{{ route('home.index') }}">Online Store</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto">
-          <a class="nav-link active" href="/">Home</a>
-          <a class="nav-link active" href="/about">About</a>
-          <a class="nav-link active" href="/products">Products</a>
+          <a class="nav-link active" href="{{ route('home.index') }}">Home</a>
+          <a class="nav-link active" href="{{ route('home.about') }}">About</a>
+          <a class="nav-link active" href="{{ route('products.index') }}">Products</a>
           <div class="vr bg-white mx-2 d-none d-lg-block"></div>
           @if(auth.isLoggedIn)
-            <a class="nav-link active" href="/auth/logout">Logout ({{ auth.user.getName() }})</a>
+            <a class="nav-link active" href="{{ route('auth.logout') }}">Logout ({{ auth.user.getName() }})</a>
           @else
-            <a class="nav-link active" href="/auth/login">Login</a>
-            <a class="nav-link active" href="/auth/register">Register</a>
+            <a class="nav-link active" href="{{ route('auth.login') }}">Login</a>
+            <a class="nav-link active" href="{{ route('auth.register') }}">Register</a>
           @endif
         </div>
       </div>

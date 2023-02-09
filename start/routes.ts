@@ -21,12 +21,12 @@
 import Route from '@ioc:Adonis/Core/Route';
 import './routes/admin';
 
-Route.get('/', 'HomeController.index');
-Route.get('/about', 'HomeController.about');
-Route.get('/products', 'ProductsController.index');
-Route.get('/products/:id', 'ProductsController.show');
-Route.get('/auth/register', 'AuthController.register');
-Route.post('/auth/store', 'AuthController.store');
-Route.get('/auth/login', 'AuthController.login');
-Route.post('/auth/connect', 'AuthController.connect');
-Route.get('/auth/logout', 'AuthController.logout');
+Route.get('/', 'HomeController.index').as('home.index');
+Route.get('/about', 'HomeController.about').as('home.about');
+Route.get('/products', 'ProductsController.index').as('products.index');
+Route.get('/products/:id', 'ProductsController.show').as('products.show');
+Route.get('/auth/register', 'AuthController.register').as('auth.register');
+Route.post('/auth/store', 'AuthController.store').as('auth.store');
+Route.get('/auth/login', 'AuthController.login').as('auth.login');
+Route.post('/auth/connect', 'AuthController.connect').as('auth.connect');
+Route.get('/auth/logout', 'AuthController.logout').as('auth.logout');
