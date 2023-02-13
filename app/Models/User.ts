@@ -1,6 +1,7 @@
+import Order from 'App/Models/Order';
 import { DateTime } from 'luxon';
 import Hash from '@ioc:Adonis/Core/Hash';
-import { column, beforeSave, BaseModel } from '@ioc:Adonis/Lucid/Orm';
+import { column, beforeSave, BaseModel, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm';
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -29,6 +30,9 @@ export default class User extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime;
+
+  @hasMany(() => Order)
+  public orders: HasMany<typeof Order>;
 
   @beforeSave()
   public static async hashPassword(user: User) {
@@ -83,5 +87,37 @@ export default class User extends BaseModel {
 
   public setBalance(balance: number) {
     this.balance = balance;
+  }
+
+  public getRememberMeToken(): string | null {
+    return this.rememberMeToken;
+  }
+
+  public setRememberMeToken(rememberMeToken: string) {
+    this.rememberMeToken = rememberMeToken;
+  }
+
+  public getCreatedAt(): DateTime {
+    return this.createdAt;
+  }
+
+  public setCreatedAt(createdAt: DateTime) {
+    this.createdAt = createdAt;
+  }
+
+  public getUpdatedAt(): DateTime {
+    return this.updatedAt;
+  }
+
+  public setUpdatedAt(updatedAt: DateTime) {
+    this.updatedAt = updatedAt;
+  }
+
+  public getOrders(): Order[] {
+    return this.orders;
+  }
+
+  public setOrders(orders) {
+    this.orders = orders;
   }
 }

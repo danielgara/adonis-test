@@ -1,5 +1,6 @@
+import Item from 'App/Models/Item';
 import { DateTime } from 'luxon';
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm';
+import { BaseModel, column, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm';
 
 export default class Product extends BaseModel {
   @column({ isPrimary: true })
@@ -22,6 +23,9 @@ export default class Product extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime;
+
+  @hasMany(() => Item)
+  public items: HasMany<typeof Item>;
 
   public getId(): number {
     return this.id;
@@ -61,6 +65,30 @@ export default class Product extends BaseModel {
 
   public setPrice(price: number) {
     this.price = price;
+  }
+
+  public getCreatedAt(): DateTime {
+    return this.createdAt;
+  }
+
+  public setCreatedAt(createdAt: DateTime) {
+    this.createdAt = createdAt;
+  }
+
+  public getUpdatedAt(): DateTime {
+    return this.updatedAt;
+  }
+
+  public setUpdatedAt(updatedAt: DateTime) {
+    this.updatedAt = updatedAt;
+  }
+
+  public getItems(): Item[] {
+    return this.items;
+  }
+
+  public setItems(items) {
+    this.items = items;
   }
 
   public static sumPricesByQuantities(products: Product[], cartProducts): number {
