@@ -62,4 +62,12 @@ export default class Product extends BaseModel {
   public setPrice(price: number) {
     this.price = price;
   }
+
+  public static sumPricesByQuantities(products: Product[], cartProducts): number {
+    let total = 0;
+    for (let i = 0; i < products.length; i++) {
+      total = total + products[i].getPrice() * cartProducts[products[i].getId()];
+    }
+    return total;
+  }
 }

@@ -30,3 +30,6 @@ Route.post('/auth/store', 'AuthController.store').as('auth.store');
 Route.get('/auth/login', 'AuthController.login').as('auth.login');
 Route.post('/auth/connect', 'AuthController.connect').as('auth.connect');
 Route.get('/auth/logout', 'AuthController.logout').as('auth.logout');
+Route.get('/cart', 'CartController.index').as('cart.index');
+Route.post('/cart/add/:id', 'CartController.add').as('cart.add');
+Route.get('/cart/delete', 'CartController.delete').as('cart.delete');
