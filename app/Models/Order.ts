@@ -10,6 +10,9 @@ export default class Order extends BaseModel {
   @column()
   public total: number;
 
+  @column()
+  public userId: number;
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime;
 
@@ -36,6 +39,14 @@ export default class Order extends BaseModel {
 
   public setTotal(total: number) {
     this.total = total;
+  }
+
+  public getUserId(): number {
+    return this.userId;
+  }
+
+  public setUserId(userId: number) {
+    this.userId = userId;
   }
 
   public getCreatedAt(): DateTime {

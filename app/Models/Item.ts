@@ -13,6 +13,12 @@ export default class Item extends BaseModel {
   @column()
   public price: number;
 
+  @column()
+  public productId: number;
+
+  @column()
+  public orderId: number;
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime;
 
@@ -47,6 +53,22 @@ export default class Item extends BaseModel {
 
   public setPrice(price: number) {
     this.price = price;
+  }
+
+  public getProductId(): number {
+    return this.productId;
+  }
+
+  public setProductId(productId: number) {
+    this.productId = productId;
+  }
+
+  public getOrderId(): number {
+    return this.orderId;
+  }
+
+  public setOrderId(orderId: number) {
+    this.orderId = orderId;
   }
 
   public getCreatedAt(): DateTime {

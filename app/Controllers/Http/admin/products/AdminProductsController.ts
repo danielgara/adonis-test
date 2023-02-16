@@ -27,7 +27,7 @@ export default class AdminProductsController {
     newProduct.setDescription(ctx.request.input('description'));
     newProduct.setPrice(ctx.request.input('price'));
     newProduct.setImage(fileName);
-    newProduct.save();
+    await newProduct.save();
     ctx.response.redirect().toRoute('admin.products.index');
   }
 
@@ -53,7 +53,7 @@ export default class AdminProductsController {
       }
     }
 
-    product.save();
+    await product.save();
     ctx.response.redirect().toRoute('admin.products.index');
   }
 

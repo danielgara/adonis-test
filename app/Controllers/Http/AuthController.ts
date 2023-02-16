@@ -18,7 +18,7 @@ export default class AuthController {
     newUser.setEmail(ctx.request.input('email'));
     newUser.setRole('client');
     newUser.setBalance(1000);
-    newUser.save();
+    await newUser.save();
     ctx.response.redirect().toRoute('home.index');
   }
 

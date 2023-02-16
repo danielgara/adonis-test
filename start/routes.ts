@@ -33,3 +33,4 @@ Route.get('/auth/logout', 'AuthController.logout').as('auth.logout');
 Route.get('/cart', 'CartController.index').as('cart.index');
 Route.post('/cart/add/:id', 'CartController.add').as('cart.add');
 Route.get('/cart/delete', 'CartController.delete').as('cart.delete');
+Route.get('/cart/purchase', 'CartController.purchase').as('cart.purchase');
