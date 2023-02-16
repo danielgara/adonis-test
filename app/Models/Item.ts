@@ -1,5 +1,5 @@
 import Order from 'App/Models/Order';
-import Product from 'App/Models/Item';
+import Product from 'App/Models/Product';
 import { DateTime } from 'luxon';
 import { column, BaseModel, belongsTo, BelongsTo } from '@ioc:Adonis/Lucid/Orm';
 

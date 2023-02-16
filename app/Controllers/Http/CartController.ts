@@ -38,10 +38,8 @@ export default class CartController {
 
   public async purchase(ctx: HttpContextContract) {
     const cartProducts = ctx.session.get('cart_products');
-    const user = ctx.auth.user;
-    if (!user) {
-      ctx.response.redirect().toRoute('auth.login');
-    } else if (!cartProducts) {
+    const user = ctx.auth.user!;
+    if (!cartProducts) {
       ctx.response.redirect().toRoute('cart.index');
     } else {
       const order = new Order();
